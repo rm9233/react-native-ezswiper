@@ -97,40 +97,40 @@ export default class EZSwiper extends Component<{}> {
         this.stopAutoPlay()
     }
 
-    componentWillReceiveProps(nextProps) {
-        this.stopAutoPlay()
-        const { dataSource, width, height, horizontal, index, loop, ratio, autoplayTimeout, autoplayDirection, cardParams } = nextProps;
+    //componentWillReceiveProps(nextProps) {
+        // this.stopAutoPlay()
+        // const { dataSource, width, height, horizontal, index, loop, ratio, autoplayTimeout, autoplayDirection, cardParams } = nextProps;
 
-        const side = horizontal ? width : height
-        const cardSide = cardParams.cardSide || side * ratio
-        const cardScale = cardParams.cardSmallSide ? (cardParams.cardSmallSide / (horizontal ? height : width)) : ratio
-        this.ezswiper = {
-            horizontal: horizontal,
-            scrollToDirection: horizontal ? 'x' : 'y',
-            side: side,
-            ratio: ratio,
-            cardParams: { cardSide: cardSide, cardScale: cardScale, cardTranslate: cardParams.cardSpace ? (((side - cardSide) + (side * (1 - cardScale))) / 2 - cardParams.cardSpace) : (((side - cardSide) + (side * (1 - cardScale))) / 2 * 0.8) },
-            dataSource: dataSource,
-            count: dataSource.length,
-            currentIndex: index,
-            loop: loop,
-            autoplayTimeout: autoplayTimeout,
-            autoplayDirection: autoplayDirection,
-        }
+        // const side = horizontal ? width : height
+        // const cardSide = cardParams.cardSide || side * ratio
+        // const cardScale = cardParams.cardSmallSide ? (cardParams.cardSmallSide / (horizontal ? height : width)) : ratio
+        // this.ezswiper = {
+        //     horizontal: horizontal,
+        //     scrollToDirection: horizontal ? 'x' : 'y',
+        //     side: side,
+        //     ratio: ratio,
+        //     cardParams: { cardSide: cardSide, cardScale: cardScale, cardTranslate: cardParams.cardSpace ? (((side - cardSide) + (side * (1 - cardScale))) / 2 - cardParams.cardSpace) : (((side - cardSide) + (side * (1 - cardScale))) / 2 * 0.8) },
+        //     dataSource: dataSource,
+        //     count: dataSource.length,
+        //     currentIndex: index,
+        //     loop: loop,
+        //     autoplayTimeout: autoplayTimeout,
+        //     autoplayDirection: autoplayDirection,
+        // }
 
-        this.scrollIndex = (this.ezswiper.loop ? this.ezswiper.currentIndex + 1 : this.ezswiper.currentIndex)        
+        // this.scrollIndex = (this.ezswiper.loop ? this.ezswiper.currentIndex + 1 : this.ezswiper.currentIndex)        
 
-        if (this.props.dataSource.length !== dataSource.length) {
-            const scaleArray = [];
-            const translateArray = [];
-            for (let i = 0; i < this.ezswiper.count + 4; i++) {
-                scaleArray.push(new Animated.Value(1));
-                translateArray.push(new Animated.Value(0));
-            }
-            this.setState({ scaleArray, translateArray });
-        }
+        // if (this.props.dataSource.length !== dataSource.length) {
+        //     const scaleArray = [];
+        //     const translateArray = [];
+        //     for (let i = 0; i < this.ezswiper.count + 4; i++) {
+        //         scaleArray.push(new Animated.Value(1));
+        //         translateArray.push(new Animated.Value(0));
+        //     }
+        //     this.setState({ scaleArray, translateArray });
+        // }
 
-    }
+    //}
 
     componentDidMount() {
         setTimeout(() => {
